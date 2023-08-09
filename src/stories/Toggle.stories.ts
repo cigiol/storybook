@@ -1,36 +1,30 @@
-// Button.stories.ts|tsx
-
-import React, { useState } from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import Toggle from "./Toggle";
 
-const meta: Meta<typeof Toggle> = {
+// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+const meta = {
+  title: "Example/Toggle",
   component: Toggle,
-};
+  parameters: {
+    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
+    layout: "centered",
+  },
+  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
+  tags: ["autodocs"],
+  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
+  argTypes: {},
+} satisfies Meta<typeof Toggle>;
+
 export default meta;
-
-type Story = StoryObj<typeof Toggle>;
-
-const ToggleWithHooks = () => {
-  // Sets the hooks for both the label and primary props
-
-  const [value, setValue] = useState(false);
-  // Sets a click handler to change the label's value
-  const handleOnChange = () => {
-    setValue(!value);
-  };
-  return (
-    <Toggle
-      onClick={handleOnChange}
-      value={value}
-      checkedLabel="AHAHAH"
-      notCheckedLabel="BEBEBE"
-    />
-  );
-};
+type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
-  render: () => <ToggleWithHooks />,
+  args: {
+    checkedLabel: "Toggle",
+    notCheckedLabel: "Not Toggle",
+    onClick: () => {},
+    value: false,
+  },
 };
