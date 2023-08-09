@@ -22,38 +22,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Success: Story = {
-  args: {
-    status: 'success',
-    message: "Hello this is a success alert.",
-  },
-};
-
-export const Error: Story = {
-    args: {
-      status: 'error',
-      message: "Hello this is a error alert.",
-    },
-};
-
-export const Warning: Story = {
-  args: {
-    status: 'warning',
-    message: "Hello this is a warning alert.",
-  },
-};
-
-export const Info: Story = {
-  args: {
-    status: 'info',
-    message: "Hello this is a info alert.",
-  },
-};
-
 export const Default: Story = {
   args: {
     status: 'default',
     message: "Hello this is a default alert.",
-    duration: 3000
+    duration: 0
   },
 };
