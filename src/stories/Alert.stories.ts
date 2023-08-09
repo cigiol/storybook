@@ -26,7 +26,6 @@ export const Success: Story = {
   args: {
     status: 'success',
     message: "Hello this is a success alert.",
-    duration: 5
   },
 };
 
@@ -34,6 +33,27 @@ export const Error: Story = {
     args: {
       status: 'error',
       message: "Hello this is a error alert.",
-      duration: 5
     },
+};
+
+export const Warning: Story = {
+  args: {
+    status: 'warning',
+    message: "Hello this is a warning alert.",
+  },
+};
+
+export const Info: Story = {
+  args: {
+    status: 'info',
+    message: "Hello this is a info alert.",
+  },
+};
+
+export const Default: Story = {
+  args: {
+    status: 'default',
+    message: "Hello this is a default alert.",
+    duration: 3000
+  },
 };

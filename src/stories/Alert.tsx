@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import {FC, useEffect, useState} from 'react';
 
 export interface IAlertProps {
   status: 'success' | 'error' | 'warning' | 'info' | 'default';
@@ -7,6 +7,7 @@ export interface IAlertProps {
 }
 
 const Alert: FC<IAlertProps> = (props) => {
+  const [active, setActive] = useState<boolean>(true);
   const { status, message, duration } = props;
 
   const handleStatus = (): string => {
@@ -38,24 +39,30 @@ const Alert: FC<IAlertProps> = (props) => {
   };
 
   const handleClose = () => {
-
+    setActive(false);
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      handleClose();
-    }, duration);
+    if(duration && duration > 0) {
+      setTimeout(() => {
+        handleClose();
+      }, duration);
+    }
   }, []);
 
   return (
-    <div
-      className={`flex items-center justify-between gap-x-2 w-full px-6 py-4 rounded border ${handleStatus()}`}
-      role="alert"
-    >
-      <i className={`fa-solid ${handleIcon()} mr-2`} />
-      <p>{message}</p>
-      <i onClick={handleClose} className="fa-solid fa-circle-xmark cursor-pointer" />
-    </div>
+    <>
+      {active && (
+        <div
+          className={`flex items-center justify-between gap-x-2 w-full px-6 py-4 rounded border ${handleStatus()}`}
+          role="alert"
+        >
+          <i className={`fa-solid ${handleIcon()} mr-2`} />
+          <p>{message}</p>
+          <i onClick={handleClose} className="fa-solid fa-circle-xmark cursor-pointer" />
+        </div>
+      )}
+    </>
   );
 };
 
