@@ -1,0 +1,54 @@
+:root {
+    /* black */
+    --ink-lighter: #72777a;
+    --ink-light: #6c7072; /* not-used */
+    --ink: #404446;
+    --ink-dark: #303437;
+    --ink-darker: #202325;
+    --ink-darkest: #090a0a;
+
+    /* grey */
+    --sky-lightest: #f7f9fa;
+    --sky-lighter: #f2f4f5;
+    --sky-light: #e3e5e5;
+    --sky: #cdcfd0;
+    --sky-dark: #979c9e;
+
+    /* purple atm */
+    --primary-lightest: #e7e7ff;
+    --primary-lighter: #c6c4ff;
+    --primary-light: #9990ff;
+    --primary: #6135f5;
+    --primary-dark: #5c2cda;
+
+    /* red */
+    --red-lightest: #ffe5e5; /* not-used */
+    --red-lighter: #ff9898;
+    --red-light: #ff6d6d; /* not-used */
+    --red: #ff5247;
+    --red-dark: #d3180c;
+
+    /* green */
+    --green-lightest: #ecfce5; /* not-used */
+    --green-lighter: #7dde86;
+    --green-light: #4cd471; /* not-used */
+    --green: #23c16b;
+    --green-dark: #198155;
+
+    /* yellow */
+    --yellow-lightest: #ffefd7; /* not-used */
+    --yellow-lighter: #ffd188;
+    --yellow-light: #ffc462; /* not-used */
+    --yellow: #ffb323;
+    --yellow-dark: #a05e03;
+
+    /* white */
+    --white: #ffffff;
+    --white-85: rgba(255, 255, 255, 0.85);
+
+    /* other */
+    --default-background: var(--sky-lightest);
+    --default-border: var(--sky-light);
+    --default-line: var(--sky-dark);
+    --default-content: var(--ink);
+}
