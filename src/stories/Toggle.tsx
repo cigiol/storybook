@@ -8,7 +8,7 @@ interface IToggleProps {
   onClick: () => void;
 }
 
-export const Toggle: FC<IToggleProps> = (props) => {
+const Toggle: FC<IToggleProps> = (props) => {
   const {
     value,
     checkedLabel,
@@ -35,3 +35,5 @@ export const Toggle: FC<IToggleProps> = (props) => {
     </label>
   );
 };
+
+export default Toggle;
