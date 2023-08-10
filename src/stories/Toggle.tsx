@@ -1,6 +1,6 @@
-import React, { FC } from "react";
+import { FC } from "react";
 
-interface IToggleProps {
+export interface IToggleProps {
   value: boolean;
   checkedLabel: string;
   notCheckedLabel: string;
@@ -16,7 +16,6 @@ const Toggle: FC<IToggleProps> = (props) => {
     className = "",
     onClick,
   } = props;
-  console.log(value);
   return (
     <label
       aria-hidden
@@ -25,7 +24,7 @@ const Toggle: FC<IToggleProps> = (props) => {
       <input
         type="checkbox"
         onChange={onClick}
-        defaultChecked={value}
+        checked={value}
         id="checked-toggle"
         className="sr-only peer"
       />
