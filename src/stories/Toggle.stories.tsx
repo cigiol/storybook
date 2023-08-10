@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Toggle from "./Toggle";
+import Toggle, {IToggleProps} from "./Toggle";
+import {useEffect, useState} from "react";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -17,14 +18,22 @@ const meta = {
 } satisfies Meta<typeof Toggle>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Toggle>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
+  render: (args: IToggleProps) => {
+    const [checked, setChecked] = useState<boolean>(false);
+
+    useEffect(() => {
+      args.value = checked;
+    }, [checked])
+
+    return <Toggle {...args} value={args.value} onClick={() => setChecked(!checked)} />
+  },
   args: {
     checkedLabel: "Toggle",
     notCheckedLabel: "Not Toggle",
-    onClick: () => {},
     value: false,
-  },
+  }
 };
