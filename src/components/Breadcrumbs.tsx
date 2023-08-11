@@ -14,7 +14,7 @@ interface item {
 interface BreadcrumbsProps {
   item: item;
   seperator?: string | React.ReactNode;
-  labelElementWrapperClasName?: string;
+  labelElementWrapperClassName?: string;
   seperatorClassName?: string;
   wrapperClassName?: string;
 }
@@ -23,7 +23,7 @@ const Breadcrumbs: FC<BreadcrumbsProps> = (props) => {
   const {
     item,
     seperator = "/",
-    labelElementWrapperClasName,
+    labelElementWrapperClassName,
     seperatorClassName,
     wrapperClassName,
   } = props;
@@ -66,7 +66,7 @@ const Breadcrumbs: FC<BreadcrumbsProps> = (props) => {
             ) : null}
             {React.isValidElement(crumb.label) ? (
               <div
-                className={`cursor-pointer ${labelElementWrapperClasName}`}
+                className={`cursor-pointer ${labelElementWrapperClassName}`}
                 onClick={() => console.log(crumb.route)}
               >
                 {crumb.label}
