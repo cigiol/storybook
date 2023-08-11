@@ -1,9 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { FaBeer } from 'react-icons/fa';
-
-
-import Badge from "./Badge";
-import {FaAngellist} from "react-icons/fa6";
+import {Badge} from "../components/Badge.tsx";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -26,22 +22,5 @@ type Story = StoryObj<typeof Badge>;
 export const Default: Story = {
   args: {
     text: "This is a Badge Text",
-    className: "bg-yellow border-yellow p-2"
   },
-  argTypes: {
-    leftIcon: {
-      options: ["FaBeer", "FaAngellist"],
-      mapping: {
-        FaBeer: <FaBeer />,
-        FaAngellist: <FaAngellist />
-      }
-    },
-    rightIcon: {
-      options: ["FaBeer", "FaAngellist"],
-      mapping: {
-        FaBeer: <FaBeer />,
-        FaAngellist: <FaAngellist />
-      },
-    }
-  }
 }
