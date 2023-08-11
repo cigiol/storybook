@@ -2,7 +2,7 @@ import { FC, ReactElement } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "../utils";
 
-const baseBadgeVariants = cva("flex w-fit justify-start items-center", {
+export const baseBadgeVariants = cva("flex w-fit justify-start items-center", {
   variants: {
     color: {
       success: "text-green bg-green-lightest",
@@ -52,4 +52,4 @@ const Badge: FC<IBadgeProps> = ({ color, size, rounded, text, className }) => {
   );
 };
 
-export { Badge, baseBadgeVariants };
+export default Badge;
