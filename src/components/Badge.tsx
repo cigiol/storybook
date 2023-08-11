@@ -26,9 +26,9 @@ const baseBadgeVariants = cva("flex w-fit justify-start items-center", {
     },
   },
   defaultVariants: {
+    color: "default",
     size: "xs",
     rounded: "default",
-    color: "default",
   },
 });
 export interface IBadgeProps extends VariantProps<typeof baseBadgeVariants> {

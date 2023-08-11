@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import {Badge} from "../components/Badge.tsx";
+import { Badge } from "../components/Badge.tsx";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -21,6 +21,9 @@ type Story = StoryObj<typeof Badge>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: Story = {
   args: {
+    color: "default",
+    size: "xs",
+    rounded: "default",
     text: "This is a Badge Text",
   },
-}
+};

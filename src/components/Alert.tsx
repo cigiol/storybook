@@ -29,9 +29,9 @@ const baseAlertVariants = cva(
       },
     },
     defaultVariants: {
+      color: "default",
       size: "md",
       rounded: "default",
-      color: "default",
     },
   }
 );
