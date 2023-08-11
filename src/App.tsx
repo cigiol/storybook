@@ -1,11 +1,30 @@
 import "./App.css";
-import {Badge} from "./components/Badge.tsx";
+import { Badge, Breadcrumbs } from "./components";
+
+interface item {
+  label: string | React.ReactNode;
+  route: string;
+  children?: item | undefined;
+}
 
 function App() {
+  const item: item = {
+    label: "homepage",
+    route: "/",
+    children: {
+      label: "category",
+      route: "/",
+      children: {
+        label: "product",
+        route: "/",
+      },
+    },
+  };
 
   return (
     <>
-      <Badge text="This is a text brother"/>
+      <Badge text="This is a text brother" />
+      <Breadcrumbs item={item} seperator=">" />
     </>
   );
 }
