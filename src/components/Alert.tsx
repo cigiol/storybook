@@ -1,10 +1,42 @@
 import { FC, useEffect, useState } from "react";
+import { AiFillCloseCircle } from "react-icons/ai";
+import { cva, VariantProps } from "class-variance-authority";
+import { cn } from "../utils";
 
-export interface IAlertProps {
-  /**
-   * What is your alert type?
-   */
-  status: "success" | "error" | "warning" | "info" | "default";
+const baseAlertVariants = cva(
+  "flex items-center relative justify-between gap-x-2 w-full px-6 py-4",
+  {
+    variants: {
+      color: {
+        success: "bg-green-lightest border-green-lighter",
+        error: "bg-red-lightest border-red",
+        warning: "bg-yellow-lightest border-yellow",
+        info: "bg-primary-lighter border-primary-light",
+        default: "bg-sky-light border-sky-lightest",
+      },
+      size: {
+        xs: "text-xs h-6 min-w-6 px-2",
+        sm: "text-sm h-8 min-w-8 px-4",
+        md: "text-base h-10 min-w-10 px-6",
+        lg: "text-lg h-12 min-w-12 px-8",
+        xl: "text-xl h-14 min-w-14 px-10",
+      },
+      rounded: {
+        none: "rounded-none",
+        default: "rounded",
+        md: "rounded-md",
+        full: "rounded-full",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+      rounded: "default",
+      color: "default",
+    },
+  }
+);
+
+export interface IAlertProps extends VariantProps<typeof baseAlertVariants> {
   /**
    * What is your alert message?
    */
@@ -15,52 +47,14 @@ export interface IAlertProps {
   duration?: number;
 }
 
-type StatusOutputsType = {
-  type: string;
-  icon: string;
-};
-
-const Alert: FC<IAlertProps> = (props) => {
+const Alert: FC<IAlertProps> = ({
+  color,
+  size,
+  rounded,
+  duration,
+  message,
+}) => {
   const [active, setActive] = useState<boolean>(true);
-  const [statusOutputs, setStatusOutputs] = useState<StatusOutputsType>({
-    type: "",
-    icon: "",
-  });
-  const { status, message, duration } = props;
-
-  useEffect(() => {
-    handleStatus();
-  }, [status]);
-
-  const handleStatus = (): void => {
-    let type = "",
-      icon = "";
-
-    switch (status) {
-      case "success":
-        type = "bg-green-lightest border-green-lighter";
-        icon = "fa-circle-check text-green";
-        break;
-      case "error":
-        type = "bg-red-lightest border-red";
-        icon = "fa-triangle-exclamation text-red";
-        break;
-      case "warning":
-        type = "bg-yellow-lightest border-yellow";
-        icon = "fa-circle-exclamation text-yellow";
-        break;
-      case "info":
-        type = "bg-primary-lighter border-primary-light";
-        icon = "fa-circle-info text-primary";
-        break;
-      default:
-        type = "bg-sky-light border-sky-lightest";
-        icon = "fa-circle-info text-ink";
-        break;
-    }
-    setStatusOutputs({ type, icon });
-  };
-
   const handleClose = () => {
     setActive(false);
   };
@@ -77,14 +71,15 @@ const Alert: FC<IAlertProps> = (props) => {
     <>
       {active && (
         <div
-          className={`flex items-center relative justify-between gap-x-2 w-full px-6 py-4 rounded border ${statusOutputs.type}`}
+          className={cn(baseAlertVariants({ color, size, rounded }))}
           role="alert"
         >
-          <i className={`fa-solid ${statusOutputs.icon} mr-2`} />
           <p>{message}</p>
-          <i
+
+          <AiFillCloseCircle
             onClick={handleClose}
-            className="fa-solid fa-circle-xmark cursor-pointer absolute -top-2 -right-2"
+            className="cursor-pointer absolute -top-2 -right-2"
+            size={18}
           />
         </div>
       )}
