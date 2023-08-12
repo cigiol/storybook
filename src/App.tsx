@@ -1,10 +1,5 @@
 import "./App.css";
-<<<<<<< HEAD
-import {Badge} from "./components/Badge.tsx";
-function App() {
-=======
-import { Badge, Breadcrumbs } from "./components";
-
+import {Badge, Breadcrumbs, Button, Switch} from "./components";
 interface item {
   label: string | React.ReactNode;
   route: string;
@@ -24,12 +19,12 @@ function App() {
       },
     },
   };
-
->>>>>>> develop
   return (
     <>
       <Badge text="This is a text brother" />
       <Breadcrumbs item={item} seperator=">" />
+      <Button variant={"secondary"}>Complete</Button>
+      <Switch>Toggle</Switch>
     </>
   );
 }
