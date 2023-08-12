@@ -25,6 +25,6 @@ export const Default: Story = {
   args: {
     variant: "primary",
     size: "default",
-    children: "Button"
+    children: "Button",
   }
 };
