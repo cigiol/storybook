@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const {COLORS} = require("./src/utils/styles/colors.ts");
 module.exports = {
   content: ["./src/**/*.{html,js,ts,tsx}"],
   theme: {
@@ -44,13 +45,6 @@ module.exports = {
       primary: "var(--primary)",
       "primary-dark": "var(--primary-dark)",
 
-      // red
-      "red-lightest": "var(--red-lightest)",
-      "red-lighter": "var(--red-lighter)",
-      "red-light": "var(--red-light)",
-      red: "var(--red)",
-      "red-dark": "var(--red-dark)",
-
       // green
       "green-lightest": "var(--green-lightest)",
       "green-lighter": "var(--green-lighter)",
@@ -89,6 +83,7 @@ module.exports = {
       none: "none",
     },
     extend: {
+      colors: {...COLORS},
       spacing: {
         "80vh": "80vh",
         "70vh": "70vh",

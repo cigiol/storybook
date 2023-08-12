@@ -1,4 +1,8 @@
 import "./App.css";
+<<<<<<< HEAD
+import {Badge} from "./components/Badge.tsx";
+function App() {
+=======
 import { Badge, Breadcrumbs } from "./components";
 
 interface item {
@@ -21,6 +25,7 @@ function App() {
     },
   };
 
+>>>>>>> develop
   return (
     <>
       <Badge text="This is a text brother" />
