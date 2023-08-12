@@ -1,4 +1,4 @@
-import React, { ReactElement, useRef } from "react";
+import React, { useRef } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "../utils";
 import {
@@ -105,7 +105,7 @@ const baseButtonVariants = cva(
 type ButtonProps = AriaButtonProps &
   React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof baseButtonVariants> & {
-    children?: ReactElement | null;
+    children?: React.ReactNode;
   };
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

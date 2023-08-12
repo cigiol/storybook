@@ -1,6 +1,5 @@
 import "./App.css";
 import {Badge} from "./components/Badge.tsx";
-
 function App() {
 
   return (
