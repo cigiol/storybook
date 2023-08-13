@@ -1,5 +1,5 @@
 import "./App.css";
-import {Badge, Breadcrumbs, Button, Switch} from "./components";
+import { Badge, Breadcrumbs, Button, Switch } from "./components";
 interface item {
   label: string | React.ReactNode;
   route: string;

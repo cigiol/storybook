@@ -1,14 +1,70 @@
 import React, { FC } from "react";
 import {
   AriaSwitchProps,
+  mergeProps,
   useFocusRing,
+  useHover,
   useSwitch,
   VisuallyHidden,
 } from "react-aria";
 import { useToggleState } from "react-stately";
+import { cva, VariantProps } from "class-variance-authority";
+import { cn } from "../utils";
+
+const baseSwitchVariants = cva(
+  [
+    "w-9",
+    "h-6",
+    "duration-300",
+    "transition",
+    "border-2",
+    "border-transparent",
+  ],
+  {
+    variants: {
+      variant: {
+        default: ["bg-gray-600", "group-data-[selected]:bg-green-500"],
+      },
+      rounded: {
+        none: "rounded-none",
+        default: "rounded",
+        md: "rounded-md",
+        full: "rounded-full",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      rounded: "full",
+    },
+  }
+);
+
+const baseSwitchInsideVariants = cva(
+  ["w-5", "h-5", "duration-300", "transition-all"],
+  {
+    variants: {
+      IVariant: {
+        default: "bg-white group-data-[selected]:ml-3",
+      },
+      IRounded: {
+        none: "rounded-none",
+        default: "rounded",
+        md: "rounded-md",
+        full: "rounded-full",
+      },
+    },
+
+    defaultVariants: {
+      IVariant: "default",
+      IRounded: "full",
+    },
+  }
+);
 
 export type SwitchProps = AriaSwitchProps &
-  React.InputHTMLAttributes<HTMLInputElement> & {
+  React.InputHTMLAttributes<HTMLInputElement> &
+  VariantProps<typeof baseSwitchVariants> &
+  VariantProps<typeof baseSwitchInsideVariants> & {
     activeText?: string;
     inActiveText?: string;
   };
@@ -16,81 +72,40 @@ export type SwitchProps = AriaSwitchProps &
 const Switch: FC<SwitchProps> = ({
   activeText = "Toggle On",
   inActiveText = "Toggle Off",
+  variant,
+  rounded,
+  IVariant,
+  IRounded,
+  className,
+  disabled,
   ...props
 }) => {
   let state = useToggleState(props);
   let ref = React.useRef(null);
-  let { inputProps } = useSwitch(props, state, ref);
+  let { inputProps, isSelected } = useSwitch(props, state, ref);
   let { isFocusVisible, focusProps } = useFocusRing();
+  const { hoverProps, isHovered } = useHover({
+    ...props,
+    isDisabled: disabled,
+  });
 
   return (
-    <label className="inline-flex relative items-center cursor-pointer">
+    <label
+      className="inline-flex relative items-center cursor-pointer group"
+      data-selected={isSelected || null}
+      data-hover={isHovered || null}
+      data-focus-visible={isFocusVisible || null}
+    >
       <VisuallyHidden>
-        <input {...inputProps} {...focusProps} ref={ref} />
+        <input {...mergeProps(inputProps, focusProps, hoverProps)} ref={ref} />
       </VisuallyHidden>
-      <svg width={40} height={24} aria-hidden="true" style={{ marginRight: 4 }}>
-        <rect
-          x={4}
-          y={4}
-          width={32}
-          height={16}
-          rx={8}
-          fill={state.isSelected ? "orange" : "gray"}
-        />
-        <circle cx={state.isSelected ? 28 : 12} cy={12} r={5} fill="white" />
-        {isFocusVisible && (
-          <rect
-            x={1}
-            y={1}
-            width={38}
-            height={22}
-            rx={11}
-            fill="none"
-            stroke="orange"
-            strokeWidth={2}
-          />
-        )}
-      </svg>
-      {isFocusVisible && (
-        <rect
-          x={1}
-          y={1}
-          width={38}
-          height={22}
-          rx={11}
-          fill="none"
-          stroke="orange"
-          strokeWidth={2}
-        />
-      )}
-      {state.isSelected ? activeText : inActiveText}
+      <div className={cn(baseSwitchVariants({ variant, rounded, className }))}>
+        <div
+          className={cn(baseSwitchInsideVariants({ IVariant, IRounded }))}
+        ></div>
+      </div>
+      <p className="ml-1">{isSelected ? activeText : inActiveText}</p>
     </label>
   );
 };
-/*
-  const {
-    value,
-    checkedLabel,
-    notCheckedLabel,
-    className = "",
-    onClick,
-  } = props;
-  return (
-    <label
-      aria-hidden
-      className={`${className} inline-flex relative items-center cursor-pointer`}
-    >
-      <input
-        type="checkbox"
-        onChange={onClick}
-        checked={value}
-        id="checked-toggle"
-        className="sr-only peer"
-      />
-      <div className="w-11 h-6 bg-sky rounded-full  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-primary"></div>
-      <p className="ml-3">{value ? checkedLabel : notCheckedLabel}</p>
-    </label>
-  );
-  * */
-
 export default Switch;
