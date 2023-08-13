@@ -1,5 +1,6 @@
 import "./App.css";
-import {Badge, Breadcrumbs, Button, Switch} from "./components";
+import { Badge, Breadcrumbs, Button, Card, Switch } from "./components";
+
 interface item {
   label: string | React.ReactNode;
   route: string;
@@ -25,6 +26,7 @@ function App() {
       <Breadcrumbs item={item} seperator=">" />
       <Button variant={"secondary"}>Complete</Button>
       <Switch>Toggle</Switch>
+      <Card className="flex-row">HELLO CARD</Card>
     </>
   );
 }
