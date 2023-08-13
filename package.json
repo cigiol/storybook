@@ -12,6 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@radix-ui/react-checkbox": "^1.0.4",
     "@radix-ui/react-switch": "^1.0.3",
     "@storybook/addon-actions": "^7.2.3",
     "@storybook/manager-api": "^7.2.3",
