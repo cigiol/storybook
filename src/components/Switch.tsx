@@ -1,13 +1,5 @@
-import React, { FC } from "react";
-import {
-  AriaSwitchProps,
-  mergeProps,
-  useFocusRing,
-  useHover,
-  useSwitch,
-  VisuallyHidden,
-} from "react-aria";
-import { useToggleState } from "react-stately";
+import * as SwitchPrimitive from "@radix-ui/react-switch";
+import React from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "../utils";
 
@@ -23,7 +15,7 @@ const baseSwitchVariants = cva(
   {
     variants: {
       variant: {
-        default: ["bg-gray-600", "group-data-[selected]:bg-green-500"],
+        default: ["bg-gray-600", "data-[state=checked]:bg-green-500"],
       },
       rounded: {
         none: "rounded-none",
@@ -40,11 +32,11 @@ const baseSwitchVariants = cva(
 );
 
 const baseSwitchInsideVariants = cva(
-  ["w-5", "h-5", "duration-300", "transition-all"],
+  ["w-5", "h-5", "duration-300", "transition-all", "block"],
   {
     variants: {
       IVariant: {
-        default: "bg-white group-data-[selected]:ml-3",
+        default: "bg-white data-[state=checked]:ml-3",
       },
       IRounded: {
         none: "rounded-none",
@@ -61,51 +53,55 @@ const baseSwitchInsideVariants = cva(
   }
 );
 
-export type SwitchProps = AriaSwitchProps &
-  React.InputHTMLAttributes<HTMLInputElement> &
+export type SwitchProps = SwitchPrimitive.SwitchProps &
   VariantProps<typeof baseSwitchVariants> &
   VariantProps<typeof baseSwitchInsideVariants> & {
+    textAlive: boolean;
     activeText?: string;
     inActiveText?: string;
   };
 
-const Switch: FC<SwitchProps> = ({
-  activeText = "Toggle On",
-  inActiveText = "Toggle Off",
-  variant,
-  rounded,
-  IVariant,
-  IRounded,
-  className,
-  disabled,
-  ...props
-}) => {
-  let state = useToggleState(props);
-  let ref = React.useRef(null);
-  let { inputProps, isSelected } = useSwitch(props, state, ref);
-  let { isFocusVisible, focusProps } = useFocusRing();
-  const { hoverProps, isHovered } = useHover({
-    ...props,
-    isDisabled: disabled,
-  });
-
-  return (
-    <label
-      className="inline-flex relative items-center cursor-pointer group"
-      data-selected={isSelected || null}
-      data-hover={isHovered || null}
-      data-focus-visible={isFocusVisible || null}
-    >
-      <VisuallyHidden>
-        <input {...mergeProps(inputProps, focusProps, hoverProps)} ref={ref} />
-      </VisuallyHidden>
-      <div className={cn(baseSwitchVariants({ variant, rounded, className }))}>
-        <div
-          className={cn(baseSwitchInsideVariants({ IVariant, IRounded }))}
-        ></div>
+const Switch = React.forwardRef<
+  React.ElementRef<typeof SwitchPrimitive.Root>,
+  SwitchProps
+>(
+  (
+    {
+      activeText = "Toggle On",
+      inActiveText = "Toggle Off",
+      textAlive = true,
+      variant,
+      rounded,
+      IVariant,
+      IRounded,
+      className,
+      checked,
+      ...props
+    },
+    forwardedRef
+  ) => {
+    return (
+      <div className="inline-flex">
+        <SwitchPrimitive.Root
+          className={cn(baseSwitchVariants({ variant, rounded, className }))}
+          {...props}
+          ref={forwardedRef}
+          checked={checked}
+          id="airplane-mode"
+        >
+          <SwitchPrimitive.Thumb
+            className={cn(baseSwitchInsideVariants({ IVariant, IRounded }))}
+          />
+        </SwitchPrimitive.Root>
+        {textAlive && (
+          <label htmlFor="airplane-mode">
+            <p className="ml-2">{checked ? activeText : inActiveText}</p>
+          </label>
+        )}
       </div>
-      <p className="ml-1">{isSelected ? activeText : inActiveText}</p>
-    </label>
-  );
-};
+    );
+  }
+);
+Switch.displayName = SwitchPrimitive.Root.displayName;
+
 export default Switch;

@@ -22,16 +22,21 @@ type Story = StoryObj<typeof Switch>;
 
 export const Primary: Story = {
   render: (args: SwitchProps) => {
-    const [{ isSelected }, updateArgs] = useArgs();
+    const [{ checked }, updateArgs] = useArgs();
+    console.log("upside", checked);
     return (
       <Switch
         {...args}
-        isSelected={isSelected}
-        onChange={() => updateArgs({ isSelected: !isSelected })}
+        onCheckedChange={() => updateArgs({ checked: !checked })}
       />
     );
   },
   args: {
-    isSelected: false,
+    checked: false,
+    textAlive: true,
+    variant: "default",
+    rounded: "full",
+    IVariant: "default",
+    IRounded: "full",
   },
 };
