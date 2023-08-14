@@ -16,3 +16,4 @@ export { default as DropdownMenuRadioItem } from "./Dropdown/DropdownMenuRadioIt
 export { default as DropdownMenuLabel } from "./Dropdown/DropdownMenuLabel.tsx";
 export { default as DropdownMenuSeparator } from "./Dropdown/DropdownMenuSeparator.tsx";
 export { default as DropdownMenuShortcut } from "./Dropdown/DropdownMenuShortcut.tsx";
+export { default as Checkbox } from "./Checkbox.tsx";
