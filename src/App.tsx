@@ -35,6 +35,7 @@ function App() {
       <Badge text="This is a text brother" />
       <Breadcrumbs item={item} seperator=">" />
       <Button variant={"secondary"}>Complete</Button>
+      <Switch textAlive={true}>Toggle</Switch>
       <br />
       <Switch
         checked={switchChecked}

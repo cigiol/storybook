@@ -9,6 +9,7 @@ import {
   useHover,
 } from "react-aria";
 import { mergeRefs } from "../utils/merge-refs.ts";
+import { Slot } from "@radix-ui/react-slot";
 
 const baseButtonVariants = cva(
   [
@@ -102,40 +103,48 @@ const baseButtonVariants = cva(
   }
 );
 
-type ButtonProps = AriaButtonProps &
+type ButtonProps = AriaButtonProps<"button"> &
   React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof baseButtonVariants> & {
-    children?: React.ReactNode;
+    asChild?: boolean;
   };
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props, forwardedRef) => {
-    const { className, variant, size, disabled, children } = props;
+    const {
+      className,
+      variant,
+      size,
+      disabled,
+      asChild = false,
+      onPress,
+      ...rest
+    } = props;
     const ref = useRef<HTMLButtonElement>(null);
-    const { buttonProps, isPressed } = useButton(
-      {
-        ...props,
-        isDisabled: disabled,
-      },
-      ref
-    );
+    const { focusProps, isFocusVisible } = useFocusRing();
     const { hoverProps, isHovered } = useHover({
       ...props,
       isDisabled: disabled,
     });
-    const { focusProps, isFocusVisible } = useFocusRing();
+    const { buttonProps, isPressed } = useButton(
+      {
+        onPress,
+        isDisabled: disabled,
+      },
+      ref
+    );
+
+    const Comp = asChild ? Slot : "button";
 
     return (
-      <button
+      <Comp
         className={cn(baseButtonVariants({ variant, size, className }))}
         ref={mergeRefs([ref, forwardedRef])}
-        {...mergeProps(buttonProps, hoverProps, focusProps)}
+        {...mergeProps(rest, buttonProps, focusProps, hoverProps)}
         data-pressed={isPressed || undefined}
         data-hovered={isHovered || undefined}
         data-focus-visible={isFocusVisible || undefined}
-      >
-        {children}
-      </button>
+      />
     );
   }
 );
