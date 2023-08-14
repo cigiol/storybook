@@ -7,3 +7,4 @@ export { default as Card } from "./Card/Card.tsx";
 export { default as CardContent } from "./Card/CardContent.tsx";
 export { default as CardHeader } from "./Card/CardHeader.tsx";
 export { default as CardFooter } from "./Card/CardFooter.tsx";
+export { default as Checkbox } from "./Checkbox.tsx";

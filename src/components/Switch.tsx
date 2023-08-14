@@ -56,7 +56,7 @@ const baseSwitchInsideVariants = cva(
 export type SwitchProps = SwitchPrimitive.SwitchProps &
   VariantProps<typeof baseSwitchVariants> &
   VariantProps<typeof baseSwitchInsideVariants> & {
-    textAlive: boolean;
+    textAlive?: boolean;
     activeText?: string;
     inActiveText?: string;
   };

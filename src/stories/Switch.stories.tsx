@@ -23,7 +23,6 @@ type Story = StoryObj<typeof Switch>;
 export const Primary: Story = {
   render: (args: SwitchProps) => {
     const [{ checked }, updateArgs] = useArgs();
-    console.log("upside", checked);
     return (
       <Switch
         {...args}
