@@ -22,3 +22,4 @@ export { default as AccordionItem } from "./Accordion/AccordionItem.tsx";
 export { default as AccordionHeader } from "./Accordion/AccordionHeader.tsx";
 export { default as AccordionTrigger } from "./Accordion/AccordionTrigger.tsx";
 export { default as AccordionContent } from "./Accordion/AccordionContent.tsx";
+export { default as AlertDialog } from "./AlertDialog/AlertDialog.tsx";
