@@ -3,6 +3,7 @@ export { default as Badge } from "./Badge";
 export { default as Switch } from "./Switch.tsx";
 export { default as Breadcrumbs } from "./Breadcrumbs";
 export { default as Button } from "./Button";
+export { default as Checkbox } from "./Checkbox.tsx";
 export { default as Card } from "./Card/Card.tsx";
 export { default as CardContent } from "./Card/CardContent.tsx";
 export { default as CardHeader } from "./Card/CardHeader.tsx";
@@ -16,4 +17,5 @@ export { default as DropdownMenuRadioItem } from "./Dropdown/DropdownMenuRadioIt
 export { default as DropdownMenuLabel } from "./Dropdown/DropdownMenuLabel.tsx";
 export { default as DropdownMenuSeparator } from "./Dropdown/DropdownMenuSeparator.tsx";
 export { default as DropdownMenuShortcut } from "./Dropdown/DropdownMenuShortcut.tsx";
-export { default as Checkbox } from "./Checkbox.tsx";
+export { default as AccordionItem } from "./Accordion/AccordionItem.tsx";
+export { default as AccordionHeader } from "./Accordion/AccordionHeader.tsx";
