@@ -34,3 +34,6 @@ export { default as AlertDialogAction } from "./AlertDialog/AlertDialogAction.ts
 export { default as Avatar } from "./Avatar/Avatar.tsx";
 export { default as AvatarImage } from "./Avatar/AvatarImage.tsx";
 export { default as AvatarFallback } from "./Avatar/AvatarFallback.tsx";
+export { default as Collapsible } from "./Collapsible/Collapsible.tsx";
+export { default as CollapsibleTrigger } from "./Collapsible/CollapsibleTrigger.tsx";
+export { default as CollapsibleContent } from "./Collapsible/CollapsibleContent.tsx";
