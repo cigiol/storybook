@@ -1,73 +1,42 @@
-import "./App.css";
+import type { Meta, StoryObj } from "@storybook/react";
+import { BiChevronDown } from "react-icons/bi";
+import { useState } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionHeader,
   AccordionItem,
   AccordionTrigger,
-  Badge,
-  Breadcrumbs,
-  Button,
-  Card,
-  Checkbox,
-  Switch,
-} from "./components";
-import { useState } from "react";
-import { BiChevronDown } from "react-icons/bi";
-interface item {
-  label: string | React.ReactNode;
-  route: string;
-  children?: item | undefined;
-}
+} from "../components";
 
-function App() {
-  const [switchChecked, setSwitchChecked] = useState<boolean>(false);
-  const [checkboxChecked, setCheckboxChecked] = useState<boolean>(false);
-  const [accordionValue, setAccordionValue] = useState("item-1");
+const meta = {
+  title: "Example/Accordion",
+  component: Accordion,
+  parameters: {
+    layout: "centered",
+  },
 
-  const item: item = {
-    label: "homepage",
-    route: "/",
-    children: {
-      label: "category",
-      route: "/",
-      children: {
-        label: "product",
-        route: "/",
-      },
-    },
-  };
-  return (
-    <>
-      <Badge text="This is a text brother" />
-      <Breadcrumbs item={item} seperator=">" />
-      <Button variant={"secondary"}>Complete</Button>
-      <Switch textAlive={true}>Toggle</Switch>
-      <br />
-      <Switch
-        checked={switchChecked}
-        onCheckedChange={() => setSwitchChecked(!switchChecked)}
-      />
-      <br />
-      <div className="flex inline-flex justify-center items-center">
-        <Checkbox
-          id="checkbox-1"
-          checked={checkboxChecked}
-          onCheckedChange={() => setCheckboxChecked(!checkboxChecked)}
-        />
-        <label htmlFor="checkbox-1" className="ml-3">
-          I accept.
-        </label>
-      </div>
-      <Card className="flex-row">HELLO CARD</Card>
+  tags: ["autodocs"],
+
+  argTypes: {},
+} satisfies Meta<typeof Accordion>;
+
+export default meta;
+type Story = StoryObj<typeof Accordion>;
+
+export const Default: Story = {
+  render: () => {
+    const [value, setValue] = useState("item-1");
+
+    return (
       <div className="relative flex h-full w-full p-6 rounded-xl shadow bg-gradient-to-br from-pink-300 via-fuchsia-200 to-purple-300 dark:from-pink-800 dark:via-fuchsia-900 dark:to-purple-800 justify-center pt-24">
         <div className="max-w-sm w-full">
           <Accordion
             type="single"
-            value={accordionValue}
+            value={value}
             className="space-y-4 w-full"
             defaultValue="item-1"
-            onValueChange={(val) => setAccordionValue(val)}
+            onValueChange={(val) => setValue(val)}
           >
             <AccordionItem value="item-1">
               <AccordionHeader>
@@ -105,8 +74,6 @@ function App() {
           </Accordion>
         </div>
       </div>
-    </>
-  );
-}
-
-export default App;
+    );
+  },
+};
