@@ -31,3 +31,6 @@ export { default as AlertDialogTitle } from "./AlertDialog/AlertDialogTitle.tsx"
 export { default as AlertDialogDescription } from "./AlertDialog/AlertDialogDescription.tsx";
 export { default as AlertDialogCancel } from "./AlertDialog/AlertDialogCancel.tsx";
 export { default as AlertDialogAction } from "./AlertDialog/AlertDialogAction.tsx";
+export { default as Avatar } from "./Avatar/Avatar.tsx";
+export { default as AvatarImage } from "./Avatar/AvatarImage.tsx";
+export { default as AvatarFallback } from "./Avatar/AvatarFallback.tsx";
