@@ -1,5 +1,5 @@
 import "./App.css";
-import { Badge, Breadcrumbs, Button, Switch } from "./components";
+import { Badge, Breadcrumbs, Button, Divider, Switch } from "./components";
 interface item {
   label: string | React.ReactNode;
   route: string;
@@ -24,6 +24,7 @@ function App() {
       <Badge text="This is a text brother" />
       <Breadcrumbs item={item} seperator=">" />
       <Button variant={"secondary"}>Complete</Button>
+      <Divider align="center" />
       <Switch>Toggle</Switch>
     </>
   );
