@@ -17,5 +17,8 @@ export { default as DropdownMenuRadioItem } from "./Dropdown/DropdownMenuRadioIt
 export { default as DropdownMenuLabel } from "./Dropdown/DropdownMenuLabel.tsx";
 export { default as DropdownMenuSeparator } from "./Dropdown/DropdownMenuSeparator.tsx";
 export { default as DropdownMenuShortcut } from "./Dropdown/DropdownMenuShortcut.tsx";
+export { default as Accordion } from "./Accordion/Accordion.tsx";
 export { default as AccordionItem } from "./Accordion/AccordionItem.tsx";
 export { default as AccordionHeader } from "./Accordion/AccordionHeader.tsx";
+export { default as AccordionTrigger } from "./Accordion/AccordionTrigger.tsx";
+export { default as AccordionContent } from "./Accordion/AccordionContent.tsx";

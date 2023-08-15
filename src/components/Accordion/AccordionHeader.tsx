@@ -3,8 +3,8 @@ import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { cn } from "../../utils";
 
 const AccordionHeader = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> & {}
+  React.ElementRef<typeof AccordionPrimitive.Header>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Header> & {}
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Header
     ref={ref}
@@ -12,6 +12,6 @@ const AccordionHeader = React.forwardRef<
     {...props}
   />
 ));
-AccordionHeader.displayName = AccordionPrimitive.Item.displayName;
+AccordionHeader.displayName = AccordionPrimitive.Header.displayName;
 
 export default AccordionHeader;
