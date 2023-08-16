@@ -34,6 +34,17 @@ export { default as AlertDialogAction } from "./AlertDialog/AlertDialogAction.ts
 export { default as Avatar } from "./Avatar/Avatar.tsx";
 export { default as AvatarImage } from "./Avatar/AvatarImage.tsx";
 export { default as AvatarFallback } from "./Avatar/AvatarFallback.tsx";
+<<<<<<< HEAD
+export { default as Dialog } from "./Dialog/Dialog.tsx";
+export { default as DialogTrigger } from "./Dialog/DialogTrigger.tsx";
+export { default as DialogPortal } from "./Dialog/DialogPortal.tsx";
+export { default as DialogOverlay } from "./Dialog/DialogOverlay.tsx";
+export { default as DialogContent } from "./Dialog/DialogContent.tsx";
+export { default as DialogTitle } from "./Dialog/DialogTitle.tsx";
+export { default as DialogDescription } from "./Dialog/DialogDescription.tsx";
+export { default as DialogClose } from "./Dialog/DialogClose.tsx";
+=======
 export { default as Collapsible } from "./Collapsible/Collapsible.tsx";
 export { default as CollapsibleTrigger } from "./Collapsible/CollapsibleTrigger.tsx";
 export { default as CollapsibleContent } from "./Collapsible/CollapsibleContent.tsx";
+>>>>>>> develop
