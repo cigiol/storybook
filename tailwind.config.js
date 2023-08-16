@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-const {COLORS} = require("./src/utils/styles/colors.ts");
+const { COLORS } = require("./src/utils/styles/colors.ts");
 module.exports = {
   content: ["./src/**/*.{html,js,ts,tsx}"],
+  darkMode: "media",
   theme: {
     fontWeight: {
       normal: 400,
@@ -22,54 +23,7 @@ module.exports = {
       small: ["0.875rem", "1rem"], //['14px', '16px']	->	['13.125px', '15px']
       tiny: ["0.75rem", "1rem"], //['12px', '16px']	->	['11.25px', '15px']
     },
-    colors: {
-      // ink
-      "ink-lighter": "var(--ink-lighter)",
-      "ink-light": "var(--ink-light)",
-      ink: "var(--ink)",
-      "ink-dark": "var(--ink-dark)",
-      "ink-darker": "var(--ink-darker)",
-      "ink-darkest": "var(--ink-darkest)",
-
-      // sky
-      "sky-lightest": "var(--sky-lightest)",
-      "sky-lighter": "var(--sky-lighter)",
-      "sky-light": "var(--sky-light)",
-      sky: "var(--sky)",
-      "sky-dark": "var(--sky-dark)",
-
-      // primary
-      "primary-lightest": "var(--primary-lightest)",
-      "primary-lighter": "var(--primary-lighter)",
-      "primary-light": "var(--primary-light)",
-      primary: "var(--primary)",
-      "primary-dark": "var(--primary-dark)",
-
-      // green
-      "green-lightest": "var(--green-lightest)",
-      "green-lighter": "var(--green-lighter)",
-      "green-light": "var(--green-light)",
-      green: "var(--green)",
-      "green-dark": "var(--green-dark)",
-
-      // yellow
-      "yellow-lightest": "var(--yellow-lightest)",
-      "yellow-lighter": "var(--yellow-lighter)",
-      "yellow-light": "var(--yellow-light)",
-      yellow: "var(--yellow)",
-      "yellow-dark": "var(--yellow-dark)",
-
-      // white
-      white: "var(--white)",
-      "white-85": "var(--white-85)",
-
-      // other
-      transparent: "transparent",
-      "default-background": "var(--default-background)",
-      "default-border": "var(--default-border)",
-      "default-line": "var(--default-line)",
-      "default-content": "var(--default-content)",
-    },
+    colors: {},
     boxShadow: {
       "design-sm":
         "0px 0px 1px rgba(20, 20, 20, 0.04), 0px 0px 8px rgba(20, 20, 20, 0.08)",
@@ -83,7 +37,28 @@ module.exports = {
       none: "none",
     },
     extend: {
-      colors: {...COLORS},
+      textColor: {
+        skin: {
+          base: "hsl(var(--color-text-base) / <alpha-value>)",
+          muted: "hsl(var(--color-text-muted) / <alpha-value>)",
+          inverted: "hsl(var(--color-text-inverted) / <alpha-value>)",
+        },
+      },
+      backgroundColor: {
+        skin: {
+          fill: "hsl(var(--color-fill) / <alpha-value>)",
+          "button-accent": "hsl(var(--color-button-accent) / <alpha-value>)",
+          "button-accent-hover":
+            "hsl(var(--color-button-accent-hover) / <alpha-value>)",
+          "button-muted": "hsl(var(--color-button-muted) / <alpha-value>)",
+        },
+      },
+      gradientColorStops: {
+        skin: {
+          hue: "hsl(var(--color-fill) / <alpha-value>)",
+        },
+      },
+      colors: { ...COLORS },
       spacing: {
         "80vh": "80vh",
         "70vh": "70vh",
