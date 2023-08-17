@@ -3,35 +3,30 @@ import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 
 import { cn } from "../utils";
 import { cva, VariantProps } from "class-variance-authority";
-import { FaCheckCircle } from "react-icons/fa";
+import { Check } from "lucide-react";
 
-const baseCheckboxVariants = cva(
-  ["h-4", "w-4", "shrink-0", "border", "focus-visible:outline-none"],
-  {
-    variants: {
-      variant: {
-        default: [
-          "data-[state=checked]:bg-green-200",
-          "data-[state=checked]:text-black",
-        ],
-      },
-      border: {
-        default: ["border-2", "border-blue-500"],
-      },
-      rounded: {
-        none: "rounded-none",
-        default: "rounded",
-        md: "rounded-md",
-        full: "rounded-full",
-      },
+const baseCheckboxVariants = cva("peer h-4 w-4 shrink-0", {
+  variants: {
+    variant: {
+      default:
+        "ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
     },
-    defaultVariants: {
-      variant: "default",
-      rounded: "default",
-      border: "default",
+    border: {
+      default: "border border-primary",
     },
-  }
-);
+    rounded: {
+      none: "rounded-none",
+      default: "rounded",
+      md: "rounded-md",
+      full: "rounded-full",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+    rounded: "default",
+    border: "default",
+  },
+});
 
 export type CheckboxProps = CheckboxPrimitive.CheckboxProps &
   VariantProps<typeof baseCheckboxVariants> & {};
@@ -48,9 +43,9 @@ const Checkbox = React.forwardRef<
     {...props}
   >
     <CheckboxPrimitive.Indicator
-      className={cn("flex items-center justify-center")}
+      className={cn("flex items-center justify-center text-current")}
     >
-      <FaCheckCircle className="h-3 w-3" />
+      <Check className="h-4 w-4" />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ));
