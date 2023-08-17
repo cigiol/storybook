@@ -20,4 +20,4 @@ const DropdownMenuItem = React.forwardRef<
 ));
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
 
-export default DropdownMenuItem;
+export { DropdownMenuItem };

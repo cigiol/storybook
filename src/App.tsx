@@ -7,7 +7,6 @@ import {
   AccordionTrigger,
   Badge,
   Breadcrumbs,
-  Button,
   Card,
   Checkbox,
   Dialog,
@@ -23,6 +22,8 @@ import {
 import { useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
+import { Button } from "@/src/components/Button.tsx";
+import { ModeToggle } from "@/src/utils/mode-toggle-theme.tsx";
 
 interface item {
   label: string | React.ReactNode;
@@ -50,31 +51,44 @@ function App() {
   };
   return (
     <>
+      <header className="absolute top-0 right-10">
+        <ModeToggle />
+      </header>
+      <Button variant="primary">Hiii</Button>
+      <br />
       <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
         <DialogTrigger asChild>
-          <Button>Click</Button>
+          <Button className="bg-skin-button-accent text-skin-inverted data-[hovered=true]:bg-skin-button-accent-hover">
+            Click
+          </Button>
         </DialogTrigger>
         <DialogPortal>
           <DialogOverlay className="fixed inset-0 z-20 bg-gray-50 opacity-50" />
-          <DialogContent className="fixed z-30 max-w-md rounded-lg p-4 md:w-fulltop-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-white dark:bg-gray-800 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-            <DialogTitle className="text-small font-medium text-gray-900 dark:text-gray-100">
+          <DialogContent className="fixed z-30 max-w-md rounded-lg p-4 md:w-fulltop-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-skin-fill-content/90 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+            <DialogTitle className="text-small font-medium text-skin-base">
               Title çocuğu
             </DialogTitle>
-            <DialogDescription className="mt-2 text-sm font-normal text-gray-700 dark:text-gray-400">
+            <DialogDescription className="mt-2 text-sm font-normal text-skin-muted">
               Make changes to your profile here. Click save when you&apos;re
               done.
             </DialogDescription>
             <div className="mt-4 flex justify-end">
               <DialogClose
+                className="inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium mr-2
+                    bg-skin-cancel text-skin-muted hover:bg-skin-cancel/90  border border-transparent focus:outline-none focus-visible:ring focus-visible:ring-skin-cancel/50 "
+              >
+                Close
+              </DialogClose>
+              <DialogClose
                 className="inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium
-                    bg-purple-600 text-white hover:bg-purple-700 dark:bg-purple-700 dark:text-gray-100 dark:hover:bg-purple-600 border border-transparent focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
+                    bg-skin-button-accent text-skin-inverted hover:bg-skin-button-accent-hover border border-transparent focus:outline-none focus-visible:ring focus-visible:ring-skin-base/50"
               >
                 Save
               </DialogClose>
             </div>
 
-            <DialogClose className="absolute top-3.5 right-3.5 inline-flex items-center justify-center rounded-full p-1 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-              <CgClose className="h-4 w-4 text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-400" />
+            <DialogClose className="absolute top-3.5 right-3.5 inline-flex items-center justify-center rounded-full p-1 focus:outline-none focus-visible:ring focus-visible:ring-skin-cancel/50">
+              <CgClose className="h-4 w-4 text-skin-muted hover:text-skin-muted/90" />
             </DialogClose>
           </DialogContent>
         </DialogPortal>

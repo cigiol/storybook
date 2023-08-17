@@ -1,4 +1,6 @@
 :root {
+
+    /*
     --color-text-base: 0deg 0% 100%;
     --color-text-muted: 225.88deg 100% 96.67%;
     --color-text-inverted: 48.00 8.20% 11.96%;
@@ -6,6 +8,18 @@
     --color-button-accent: 53.01deg 96.26% 58.04%;
     --color-button-accent-hover: 53.25deg 96.39% 67.45%;
     --color-button-muted: 263.05deg 100% 70.39%;
+    --color-fill-content: 60deg 2% 10%;
+    --color-cancel: 240deg 5% 34%;
+    --color-success: 151deg 73% 48%;
+
+
+    --color-ring-base: 53.01deg 96.26% 58.04%;
+    --color-ring-cancel: 218deg 11% 65%;
+    --color-ring-success: 151deg 73% 48%;
+     */
+
+
+
 
 
     --primary--700: #fff2f8;
@@ -353,14 +367,4 @@
     --default-border: var(--sky-light);
     --default-line: var(--sky-dark);
     --default-content: var(--ink);
-}
-
-.theme-second {
-    --color-text-base: 0deg 0% 100%;
-    --color-text-muted: 225.88deg 100% 96.67%;
-    --color-text-inverted: 243.40deg 75.36% 58.63%;
-    --color-fill: 332.24deg 100% 50%;
-    --color-button-accent: 264.62deg 100% 50.78%;
-    --color-button-accent-hover: 263.87deg 100% 63.53%;
-    --color-button-muted: 263.05deg 100% 70.39%;
 }
