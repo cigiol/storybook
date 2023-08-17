@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
   Badge,
   Breadcrumbs,
+  Button,
   Card,
   Checkbox,
   Dialog,
@@ -18,13 +19,15 @@ import {
   DialogTitle,
   DialogTrigger,
   DropdownMenuShortcut,
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
   Switch,
 } from "./components";
 import { Input } from "@/src/components/Input.tsx";
 import { Label } from "@/src/components/Label.tsx";
 
 import { useState } from "react";
-import { Button } from "@/src/components/Button.tsx";
 import { ModeToggle } from "@/src/utils/mode-toggle-theme.tsx";
 import {
   ChevronDown,
@@ -370,6 +373,51 @@ function App() {
                   className="dark:text-gray-300 select-none text-sm font-medium text-white"
                 >
                   Dropdown
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="h-[550px] w-full scroll-mt-6 ">
+          <div className="relative flex h-full w-full p-6 rounded-xl border-2 shadow bg-card text-card-foreground justify-center pt-24">
+            <div className="max-w-sm w-full flex items-center space-x-2 justify-center">
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white p-2.5 dark:bg-black/30">
+                    <Users className="mr-2 h-4 w-4" />
+                  </div>
+                </HoverCardTrigger>
+                <HoverCardContent
+                  align="center"
+                  sideOffset={4}
+                  className="radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down max-w-md rounded-lg p-4 md:w-full bg-white dark:bg-black/30 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
+                >
+                  <div className="flex h-full w-full space-x-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full shadow-inner bg-gray-50/60 p-2.5 dark:bg-black/30">
+                      <Users className="mr-2 h-4 w-4" />
+                    </div>
+
+                    <div>
+                      <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                        Tailwind CSS
+                      </h3>
+
+                      <p className="mt-1 text-sm font-normal text-gray-700 dark:text-gray-400">
+                        A utility-first CSS framework for rapidly building
+                        custom user interfaces.
+                      </p>
+                    </div>
+                  </div>
+                </HoverCardContent>
+              </HoverCard>
+            </div>
+            <div className="absolute inset-x-0 top-0 rounded-t-xl flex items-center justify-between bg-black/50 px-4 py-2.5 dark:bg-black/30">
+              <div className="flex items-center space-x-2">
+                <a
+                  href="#hovercard"
+                  className="dark:text-gray-300 select-none text-sm font-medium text-white"
+                >
+                  HoverCard
                 </a>
               </div>
             </div>

@@ -1,4 +1,5 @@
 export { default as Alert } from "./Alert";
+export { default as Button } from "./Button";
 export { default as Badge } from "./Badge";
 export { default as Switch } from "./Switch.tsx";
 export { default as Breadcrumbs } from "./Breadcrumbs";
@@ -42,3 +43,6 @@ export { default as DialogClose } from "./Dialog/DialogClose.tsx";
 export { default as Collapsible } from "./Collapsible/Collapsible.tsx";
 export { default as CollapsibleTrigger } from "./Collapsible/CollapsibleTrigger.tsx";
 export { default as CollapsibleContent } from "./Collapsible/CollapsibleContent.tsx";
+export { default as HoverCard } from "./HoverCard/HoverCard.tsx";
+export { default as HoverCardTrigger } from "./HoverCard/HoverCardTrigger.tsx";
+export { default as HoverCardContent } from "./HoverCard/HoverCardContent.tsx";

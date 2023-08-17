@@ -6,14 +6,16 @@ import {
   DropdownMenuSub,
   DropdownMenuTrigger,
 } from "../components/Dropdown/Dropdown.tsx";
-import DropdownMenuContent from "../components/Dropdown/DropdownMenuContent.tsx";
+
 import DropdownMenuLabel from "../components/Dropdown/DropdownMenuLabel.tsx";
 import DropdownMenuSeparator from "../components/Dropdown/DropdownMenuSeparator.tsx";
-import DropdownMenuItem from "../components/Dropdown/DropdownMenuItem.tsx";
+
 import { FaCrop, FaFile, FaLink } from "react-icons/fa6";
 import DropdownMenuSubTrigger from "../components/Dropdown/DropdownMenuSubTrigger.tsx";
 import { FaCogs } from "react-icons/fa";
 import DropdownMenuSubContent from "../components/Dropdown/DropdownMenuSubContent.tsx";
+import { DropdownMenuContent } from "../components/Dropdown/DropdownMenuContent.tsx";
+import { DropdownMenuItem } from "../components/Dropdown/DropdownMenuItem.tsx";
 
 const meta = {
   title: "Example/DropdownMenu",
@@ -36,7 +38,7 @@ export const Primary: Story = {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="secondary" size="small">
+          <Button variant="secondary" size="sm">
             Open
           </Button>
         </DropdownMenuTrigger>
