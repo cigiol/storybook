@@ -8,7 +8,10 @@ const AccordionItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
-    className={cn("bg-primary rounded-lg  w-full", className)}
+    className={cn(
+      "bg-primary rounded-lg  w-full ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+      className
+    )}
     {...props}
   />
 ));

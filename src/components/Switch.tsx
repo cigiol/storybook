@@ -4,18 +4,12 @@ import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "../utils";
 
 const baseSwitchVariants = cva(
-  [
-    "w-9",
-    "h-6",
-    "duration-300",
-    "transition",
-    "border-2",
-    "border-transparent",
-  ],
+  "peer inline-flex h-[24px] w-[44px] border-2 border-transparent shrink-0 cursor-pointer items-center",
   {
     variants: {
       variant: {
-        default: ["bg-gray-600", "data-[state=checked]:bg-green-500"],
+        default:
+          "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input",
       },
       rounded: {
         none: "rounded-none",
@@ -32,11 +26,12 @@ const baseSwitchVariants = cva(
 );
 
 const baseSwitchInsideVariants = cva(
-  ["w-5", "h-5", "duration-300", "transition-all", "block"],
+  "pointer-events-none block h-5 w-5 transition-transform",
   {
     variants: {
       IVariant: {
-        default: "bg-white data-[state=checked]:ml-3",
+        default:
+          "bg-background shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0",
       },
       IRounded: {
         none: "rounded-none",
@@ -56,7 +51,6 @@ const baseSwitchInsideVariants = cva(
 export type SwitchProps = SwitchPrimitive.SwitchProps &
   VariantProps<typeof baseSwitchVariants> &
   VariantProps<typeof baseSwitchInsideVariants> & {
-    textAlive?: boolean;
     activeText?: string;
     inActiveText?: string;
   };
@@ -69,7 +63,6 @@ const Switch = React.forwardRef<
     {
       activeText = "Toggle On",
       inActiveText = "Toggle Off",
-      textAlive = true,
       variant,
       rounded,
       IVariant,
@@ -81,24 +74,20 @@ const Switch = React.forwardRef<
     forwardedRef
   ) => {
     return (
-      <div className="inline-flex">
-        <SwitchPrimitive.Root
-          className={cn(baseSwitchVariants({ variant, rounded, className }))}
-          {...props}
-          ref={forwardedRef}
-          checked={checked}
-          id="airplane-mode"
-        >
-          <SwitchPrimitive.Thumb
-            className={cn(baseSwitchInsideVariants({ IVariant, IRounded }))}
-          />
-        </SwitchPrimitive.Root>
-        {textAlive && (
-          <label htmlFor="airplane-mode">
-            <p className="ml-2">{checked ? activeText : inActiveText}</p>
-          </label>
-        )}
-      </div>
+      <SwitchPrimitive.Root
+        className={cn(baseSwitchVariants({ variant, rounded, className }))}
+        {...props}
+        ref={forwardedRef}
+        checked={checked}
+        id="switch-1"
+      >
+        <SwitchPrimitive.Thumb
+          className={cn(
+            "pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0",
+            baseSwitchInsideVariants({ IVariant, IRounded })
+          )}
+        />
+      </SwitchPrimitive.Root>
     );
   }
 );

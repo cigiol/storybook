@@ -8,7 +8,7 @@ const AccordionHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Header
     ref={ref}
-    className={cn("w-full", className)}
+    className={cn("flex", className)}
     {...props}
   />
 ));
