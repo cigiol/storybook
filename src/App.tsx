@@ -17,6 +17,7 @@ import {
   DialogPortal,
   DialogTitle,
   DialogTrigger,
+  DropdownMenuShortcut,
   Switch,
 } from "./components";
 import { Input } from "@/src/components/Input.tsx";
@@ -25,8 +26,37 @@ import { Label } from "@/src/components/Label.tsx";
 import { useState } from "react";
 import { Button } from "@/src/components/Button.tsx";
 import { ModeToggle } from "@/src/utils/mode-toggle-theme.tsx";
-import { ChevronDown } from "lucide-react";
+import {
+  ChevronDown,
+  Cloud,
+  CreditCard,
+  Github,
+  Keyboard,
+  LifeBuoy,
+  LogOut,
+  Mail,
+  MessageSquare,
+  Plus,
+  PlusCircle,
+  Settings,
+  User,
+  UserPlus,
+  Users,
+} from "lucide-react";
 import { CgClose } from "react-icons/cg";
+import {
+  DropdownMenu,
+  DropdownMenuSub,
+  DropdownMenuTrigger,
+  DropdownMenuGroup,
+  DropdownMenuPortal,
+} from "@/src/components/Dropdown/Dropdown.tsx";
+import { DropdownMenuContent } from "@/src/components/Dropdown/DropdownMenuContent.tsx";
+import { DropdownMenuItem } from "@/src/components/Dropdown/DropdownMenuItem.tsx";
+import DropdownMenuSeparator from "./components/Dropdown/DropdownMenuSeparator.tsx";
+import DropdownMenuLabel from "./components/Dropdown/DropdownMenuLabel.tsx";
+import DropdownMenuSubTrigger from "./components/Dropdown/DropdownMenuSubTrigger.tsx";
+import DropdownMenuSubContent from "./components/Dropdown/DropdownMenuSubContent.tsx";
 
 interface item {
   label: string | React.ReactNode;
@@ -37,7 +67,7 @@ interface item {
 function App() {
   const [switchChecked, setSwitchChecked] = useState<boolean>(false);
   const [accordionValue, setAccordionValue] = useState("item-1");
-  let [dialogIsOpen, setDialogIsOpen] = useState(false);
+  const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   const item: item = {
     label: "homepage",
@@ -189,7 +219,7 @@ function App() {
             <div className="max-w-sm w-full flex items-center space-x-2 justify-center">
               <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
                 <DialogTrigger asChild>
-                  <Button variant="outline">Edit me</Button>
+                  <Button>Edit me</Button>
                 </DialogTrigger>
                 <DialogPortal>
                   <DialogOverlay />
@@ -239,6 +269,107 @@ function App() {
                   className="dark:text-gray-300 select-none text-sm font-medium text-white"
                 >
                   Dialog
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="h-[550px] w-full scroll-mt-6 ">
+          <div className="relative flex h-full w-full p-6 rounded-xl border-2 shadow bg-card text-card-foreground justify-center pt-24">
+            <div className="max-w-sm w-full flex items-center space-x-2 justify-center">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button>Open My Account</Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56">
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>
+                      <User className="mr-2 h-4 w-4" />
+                      <span>Profile</span>
+                      <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <CreditCard className="mr-2 h-4 w-4" />
+                      <span>Billing</span>
+                      <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Settings className="mr-2 h-4 w-4" />
+                      <span>Settings</span>
+                      <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Keyboard className="mr-2 h-4 w-4" />
+                      <span>Keyboard shortcuts</span>
+                      <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>
+                      <Users className="mr-2 h-4 w-4" />
+                      <span>Team</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuSub>
+                      <DropdownMenuSubTrigger>
+                        <UserPlus className="mr-2 h-4 w-4" />
+                        <span>Invite users</span>
+                      </DropdownMenuSubTrigger>
+                      <DropdownMenuPortal>
+                        <DropdownMenuSubContent>
+                          <DropdownMenuItem>
+                            <Mail className="mr-2 h-4 w-4" />
+                            <span>Email</span>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem>
+                            <MessageSquare className="mr-2 h-4 w-4" />
+                            <span>Message</span>
+                          </DropdownMenuItem>
+                          <DropdownMenuSeparator />
+                          <DropdownMenuItem>
+                            <PlusCircle className="mr-2 h-4 w-4" />
+                            <span>More...</span>
+                          </DropdownMenuItem>
+                        </DropdownMenuSubContent>
+                      </DropdownMenuPortal>
+                    </DropdownMenuSub>
+                    <DropdownMenuItem>
+                      <Plus className="mr-2 h-4 w-4" />
+                      <span>New Team</span>
+                      <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <Github className="mr-2 h-4 w-4" />
+                    <span>GitHub</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <LifeBuoy className="mr-2 h-4 w-4" />
+                    <span>Support</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem disabled>
+                    <Cloud className="mr-2 h-4 w-4" />
+                    <span>API</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Log out</span>
+                    <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+            <div className="absolute inset-x-0 top-0 rounded-t-xl flex items-center justify-between bg-black/50 px-4 py-2.5 dark:bg-black/30">
+              <div className="flex items-center space-x-2">
+                <a
+                  href="#dropdown"
+                  className="dark:text-gray-300 select-none text-sm font-medium text-white"
+                >
+                  Dropdown
                 </a>
               </div>
             </div>
