@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-import { AiFillCloseCircle } from "react-icons/ai";
 import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "../utils";
 
@@ -76,11 +75,12 @@ const Alert: FC<IAlertProps> = ({
         >
           <p>{message}</p>
 
-          <AiFillCloseCircle
+          <button
             onClick={handleClose}
             className="cursor-pointer absolute -top-2 -right-2"
-            size={18}
-          />
+          >
+            x
+          </button>
         </div>
       )}
     </>

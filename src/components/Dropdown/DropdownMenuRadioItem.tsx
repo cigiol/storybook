@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-import { cn } from "@/src/utils";
+import { cn } from "../../utils";
 import { Circle } from "lucide-react";
 
 const DropdownMenuRadioItem = React.forwardRef<

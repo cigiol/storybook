@@ -1,13 +1,13 @@
-import { useTheme } from "@/src/components/theme-provider.tsx";
+import { useTheme } from "../components/theme-provider.tsx";
 
 import {
   DropdownMenu,
   DropdownMenuTrigger,
-} from "@/src/components/Dropdown/Dropdown.tsx";
-import { DropdownMenuContent } from "@/src/components/Dropdown/DropdownMenuContent.tsx";
-import { DropdownMenuItem } from "@/src/components/Dropdown/DropdownMenuItem.tsx";
+} from "../components/Dropdown/Dropdown.tsx";
+import { DropdownMenuContent } from "../components/Dropdown/DropdownMenuContent.tsx";
+import { DropdownMenuItem } from "../components/Dropdown/DropdownMenuItem.tsx";
 
-import { Button } from "@/src/components/Button.tsx";
+import { Button } from "../components/Button.tsx";
 import { Moon, Sun } from "lucide-react";
 
 export function ModeToggle() {

@@ -20,12 +20,12 @@ import {
   DropdownMenuShortcut,
   Switch,
 } from "./components";
-import { Input } from "@/src/components/Input.tsx";
-import { Label } from "@/src/components/Label.tsx";
+import { Input } from "./components/Input.tsx";
+import { Label } from "./components/Label.tsx";
 
 import { useState } from "react";
-import { Button } from "@/src/components/Button.tsx";
-import { ModeToggle } from "@/src/utils/mode-toggle-theme.tsx";
+import { Button } from "./components/Button.tsx";
+import { ModeToggle } from "./utils/mode-toggle-theme.tsx";
 import {
   ChevronDown,
   Cloud,
@@ -43,16 +43,15 @@ import {
   UserPlus,
   Users,
 } from "lucide-react";
-import { CgClose } from "react-icons/cg";
 import {
   DropdownMenu,
   DropdownMenuSub,
   DropdownMenuTrigger,
   DropdownMenuGroup,
   DropdownMenuPortal,
-} from "@/src/components/Dropdown/Dropdown.tsx";
-import { DropdownMenuContent } from "@/src/components/Dropdown/DropdownMenuContent.tsx";
-import { DropdownMenuItem } from "@/src/components/Dropdown/DropdownMenuItem.tsx";
+} from "./components/Dropdown/Dropdown.tsx";
+import { DropdownMenuContent } from "./components/Dropdown/DropdownMenuContent.tsx";
+import { DropdownMenuItem } from "./components/Dropdown/DropdownMenuItem.tsx";
 import DropdownMenuSeparator from "./components/Dropdown/DropdownMenuSeparator.tsx";
 import DropdownMenuLabel from "./components/Dropdown/DropdownMenuLabel.tsx";
 import DropdownMenuSubTrigger from "./components/Dropdown/DropdownMenuSubTrigger.tsx";
@@ -256,7 +255,9 @@ function App() {
                     </div>
 
                     <DialogClose>
-                      <CgClose className="h-4 w-4 text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-400" />
+                      <div className="h-4 w-4 text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-400">
+                        x
+                      </div>
                     </DialogClose>
                   </DialogContent>
                 </DialogPortal>
